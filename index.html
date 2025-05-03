@@ -1,10 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head><title>Welcome Home, My weary Child</title></head>
+    <head>
+        <title>Welcome Home, My weary Child</title>
+        <!-- Firebase App (core) -->
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+    </head>
     <body>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+            import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyCbvTOoL7dMpPVESfelzbR1a5WUrNZEbL4",
+              authDomain: "dump-pyar-a6257.firebaseapp.com",
+              projectId: "dump-pyar-a6257",
+              storageBucket: "dump-pyar-a6257.firebasestorage.app",
+              messagingSenderId: "398928182308",
+              appId: "1:398928182308:web:623b3e386fd0cbb1d16cb1"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);  // Initialize Firestore
+            
+            // Your form submission logic
+            document.getElementById("signupForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById("nameInput").value;
+                const email = document.getElementById("emailInput").value;
+                
+                try {
+                    // Add name and email to Firestore
+                    await addDoc(collection(db, "subscribers"), { 
+                        name: name, 
+                        email: email, 
+                        timestamp: new Date() 
+                    });
+                    document.getElementById("message").textContent = "✅ Subscribed successfully!";
+                    document.getElementById("signupForm").reset();
+                } catch (err) {
+                    document.getElementById("message").textContent = "❌ Error: " + err.message;
+                }
+            });
+        </script>
+        
         <h2 style="color:rgb(252, 12, 12); background-color: black;"><marquee behavior="scroll" direction="left">आज का लौण्डा ये कहता हम तो बिस्मिल थक गये || अपनी आज़ादी तो भैया लौण्डिया के तिल में है</marquee></h2>
         <img src="My_idols_are_dead_and_my_enemies_are_in_power.jpg" alt="My idols are dead and my enemies are in power"><br>
-       <a href="mailto:mainak2ms@gmail.com"><img src="email.svg" height=50px width=50px></a>
+        <a href="mailto:mainak2ms@gmail.com"><img src="email.svg" height=50px width=50px></a>
         <a href="https://github.com/Starhopperr"><img src="github.svg" height=50px width=50px></a>
         <a href="https://www.instagram.com/starhopper.senpai"><img src="insta.svg"></a>
 
@@ -21,5 +67,13 @@
             If I were to encounter such a monster, I would likely be eaten by it because, in truth, I am that monster
         </p>
         <video src="Phiriye_dao.mp4" controls autoplay>Miles</video>
+        
+        <form id="signupForm">
+            <input type="text" id="nameInput" placeholder="Enter your name" required /><br>
+            <input type="email" id="emailInput" placeholder="Enter your email" required /><br>
+            <button type="submit">Subscribe</button>
+        </form>
+          
+        <p id="message"></p>
     </body>
 </html>
