@@ -7,13 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #111;
-            --text-color: #f5f5f5;
-            --accent-color: #ff3c3c;
-            --form-bg: #222;
-        }
-
-        [data-theme="light"] {
             --bg-color: #fefefe;
             --text-color: #111;
             --accent-color: #d92727;
@@ -27,21 +20,6 @@
             color: var(--text-color);
             font-family: 'Space Mono', monospace;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: var(--accent-color);
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            z-index: 100;
         }
 
         h2 {
@@ -60,7 +38,7 @@
             max-width: 90%;
             margin: 20px 0;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 0 20px rgba(217, 39, 39, 0.3);
         }
 
         a img {
@@ -78,7 +56,7 @@
             background: var(--form-bg);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+            box-shadow: 0 0 10px rgba(217, 39, 39, 0.2);
         }
 
         input, button {
@@ -114,7 +92,7 @@
             width: 90%;
             max-width: 720px;
             border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
 
         #message {
@@ -144,8 +122,6 @@
 </head>
 <body>
 
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-
     <h2>
         <marquee behavior="scroll" direction="left">
             आज का लौण्डा ये कहता हम तो बिस्मिल थक गये || अपनी आज़ादी तो भैया लौण्डिया के तिल में है
@@ -170,10 +146,18 @@
 
     <p id="message"></p>
 
-    <p>
-        There are many types of monsters in this world...<br><br>
-        If I were to encounter such a monster, I would likely be eaten by it because, in truth, I am that monster.
-    </p>
+     <p>  
+        There are many types of monsters in this world, monsters who will not show themselves and who cause trouble.<br>  
+        Monsters who abduct children, monsters who devour dreams, monsters who suck blood, and monsters who always tell lies.<br>  
+        <br>  
+        Lying monsters are a real nuisance.<br>  
+        They are much more cunning than other monsters.<br>  
+        They pose as humans, even though they have no understanding of the human heart.<br>  
+        They eat, even though they've never experienced hunger.<br>  
+        They study even though they have no interest in academics.<br>  
+        They seek friendship even though they do not know how to love.<br>  
+        If I were to encounter such a monster, I would likely be eaten by it because, in truth, I am that monster  
+    </p>  
 
     <video src="Phiriye_dao.mp4" controls autoplay loop></video>
 
@@ -207,26 +191,12 @@
                     email: email,
                     timestamp: new Date()
                 });
-                document.getElementById("message").textContent = "✅ Subscribed successfully!";
+                document.getElementById("message").textContent = "Welcome to Dump Pyar";
                 document.getElementById("signupForm").reset();
             } catch (err) {
                 document.getElementById("message").textContent = "❌ Error: " + err.message;
             }
         });
-
-        // Theme toggle logic
-        const toggleTheme = () => {
-            const currentTheme = document.documentElement.getAttribute("data-theme");
-            const newTheme = currentTheme === "light" ? "dark" : "light";
-            document.documentElement.setAttribute("data-theme", newTheme);
-            localStorage.setItem("theme", newTheme);
-        };
-
-        // On load, apply theme from localStorage
-        window.onload = () => {
-            const savedTheme = localStorage.getItem("theme") || "dark";
-            document.documentElement.setAttribute("data-theme", savedTheme);
-        };
     </script>
 </body>
 </html>
