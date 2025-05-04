@@ -171,6 +171,17 @@
           messageEl.style.color = "red";
         }
       });
+    <!-- Background Color Changer Script -->
+    <script>
+      const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
+      let currentIndex = 0;
+
+      function changeBackgroundColor() {
+        document.body.style.backgroundColor = colors[currentIndex];
+        currentIndex = (currentIndex + 1) % colors.length;
+      }
+
+      setInterval(changeBackgroundColor, 1000);
     </script>
   </body>
 </html>
