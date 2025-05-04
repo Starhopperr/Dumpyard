@@ -2,181 +2,141 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome Home, My weary Child</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono&display=swap" rel="stylesheet">
+    <title>Welcome Home, My Weary Child</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-check.js" type="module"></script>
     <style>
-        :root {
-            --bg-color: #fefefe;
-            --text-color: #111;
-            --accent-color: #d92727;
-            --form-bg: #e0e0e0;
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Space Mono', monospace;
+        h2, p {
             text-align: center;
         }
 
-        h2 {
-            background: black;
-            color: var(--accent-color);
-            padding: 10px;
-            font-family: 'DM Serif Display', serif;
-        }
-
         marquee {
+            color: #b30000;
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
         img {
-            max-width: 90%;
-            margin: 20px 0;
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(217, 39, 39, 0.3);
-        }
-
-        a img {
-            margin: 10px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        a img:hover {
-            transform: scale(1.1);
         }
 
         form {
-            margin: 30px auto;
-            display: inline-block;
-            background: var(--form-bg);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(217, 39, 39, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
         }
 
         input, button {
             padding: 10px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        input {
-            width: 200px;
+            margin: 8px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
         }
 
         button {
-            background: var(--accent-color);
+            background-color: #007bff;
             color: white;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #ff1a1a;
-        }
-
-        p {
-            max-width: 700px;
-            margin: 20px auto;
-            line-height: 1.6;
-        }
-
-        video {
-            margin-top: 30px;
-            width: 90%;
-            max-width: 720px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border: none;
+            font-weight: bold;
         }
 
         #message {
+            text-align: center;
             font-weight: bold;
-            margin-top: 10px;
+            color: green;
         }
 
-        @media (max-width: 600px) {
-            input {
-                width: 90%;
-                margin-bottom: 10px;
-            }
+        .socials {
+            text-align: center;
+            margin: 20px 0;
+        }
 
-            button {
-                width: 90%;
-            }
+        .socials a {
+            margin: 0 10px;
+            display: inline-block;
+        }
 
-            form {
-                width: 90%;
-            }
+        video {
+            display: block;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 600px;
         }
     </style>
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
 </head>
 <body>
-
     <h2>
-        <marquee behavior="scroll" direction="left">
-            आज का लौण्डा ये कहता हम तो बिस्मिल थक गये || अपनी आज़ादी तो भैया लौण्डिया के तिल में है
-        </marquee>
+        <marquee>आज का लौण्डा ये कहता हम तो बिस्मिल थक गये || अपनी आज़ादी तो भैया लौण्डिया के तिल में है</marquee>
     </h2>
 
     <img src="My_idols_are_dead_and_my_enemies_are_in_power.jpg" alt="My idols are dead and my enemies are in power">
-    
-    <div>
-        <a href="mailto:mainak2ms@gmail.com"><img src="email.svg" height="50" width="50" alt="email"></a>
-        <a href="https://github.com/Starhopperr"><img src="github.svg" height="50" width="50" alt="github"></a>
-        <a href="https://www.instagram.com/starhopper.senpai"><img src="insta.svg" height="50" width="50" alt="instagram"></a>
+
+    <div class="socials">
+        <a href="mailto:mainak2ms@gmail.com"><img src="email.svg" height="40" width="40"></a>
+        <a href="https://github.com/Starhopperr"><img src="github.svg" height="40" width="40"></a>
+        <a href="https://www.instagram.com/starhopper.senpai"><img src="insta.svg" height="40" width="40"></a>
     </div>
 
-    <h2>Subscribe to my newsletter: Dump pyar</h2>
-
+    <h2>Subscribe to my newsletter: Dump Pyar</h2>
     <form id="signupForm">
         <input type="text" id="nameInput" placeholder="Enter your name" required />
-        <input type="email" id="emailInput" placeholder="Enter your email" required /><br>
+        <input type="email" id="emailInput" placeholder="Enter your email" required />
         <button type="submit">Subscribe</button>
     </form>
-
     <p id="message"></p>
 
-     <p>  
-        There are many types of monsters in this world, monsters who will not show themselves and who cause trouble.<br>  
-        Monsters who abduct children, monsters who devour dreams, monsters who suck blood, and monsters who always tell lies.<br>  
-        <br>  
-        Lying monsters are a real nuisance.<br>  
-        They are much more cunning than other monsters.<br>  
-        They pose as humans, even though they have no understanding of the human heart.<br>  
-        They eat, even though they've never experienced hunger.<br>  
-        They study even though they have no interest in academics.<br>  
-        They seek friendship even though they do not know how to love.<br>  
-        If I were to encounter such a monster, I would likely be eaten by it because, in truth, I am that monster  
-    </p>  
+    <p>
+        There are many types of monsters in this world, monsters who will not show themselves and who cause trouble.<br>
+        Monsters who abduct children, monsters who devour dreams, monsters who suck blood, and monsters who always tell lies.<br><br>
+        Lying monsters are a real nuisance.<br>
+        They are much more cunning than other monsters.<br>
+        They pose as humans, even though they have no understanding of the human heart.<br>
+        They eat, even though they've never experienced hunger.<br>
+        They study even though they have no interest in academics.<br>
+        They seek friendship even though they do not know how to love.<br><br>
+        If I were to encounter such a monster, I would likely be eaten by it because, in truth, I am that monster.
+    </p>
 
-    <video src="Phiriye_dao.mp4" controls autoplay loop></video>
-
+    <video src="Phiriye_dao.mp4" controls autoplay></video>
     <p>Good Night dear, take care.</p>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
-      
+        import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app-check.js";
+
         const firebaseConfig = {
             apiKey: "AIzaSyCbvTOoL7dMpPVESfelzbR1a5WUrNZEbL4",
             authDomain: "dump-pyar-a6257.firebaseapp.com",
             projectId: "dump-pyar-a6257",
-            storageBucket: "dump-pyar-a6257.firebasestorage.app",
+            storageBucket: "dump-pyar-a6257.appspot.com",
             messagingSenderId: "398928182308",
             appId: "1:398928182308:web:623b3e386fd0cbb1d16cb1"
         };
 
         const app = initializeApp(firebaseConfig);
+
+        // Enable App Check
+        const appCheck = initializeAppCheck(app, {
+            provider: new ReCaptchaV3Provider('6LexbC0rAAAAALvOhR8m-bBwigEYaXn5trf2ZUnN'), // Replace with actual site key
+            isTokenAutoRefreshEnabled: true
+        });
+
         const db = getFirestore(app);
 
         document.getElementById("signupForm").addEventListener("submit", async (e) => {
@@ -191,10 +151,11 @@
                     email: email,
                     timestamp: new Date()
                 });
-                document.getElementById("message").textContent = "Welcome to Dump Pyar";
+                document.getElementById("message").textContent = "✅ Subscribed successfully!";
                 document.getElementById("signupForm").reset();
             } catch (err) {
                 document.getElementById("message").textContent = "❌ Error: " + err.message;
+                document.getElementById("message").style.color = "red";
             }
         });
     </script>
