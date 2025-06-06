@@ -71,17 +71,38 @@
 
       input,
       button {
-        padding: 10px;
-        font-size: 1rem;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
+      position: relative;
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+      background-color: yellow;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      z-index: 1;
+      transition: color 0.4s ease;
+    }
 
-      button {
-        background-color: #111;
-        color: white;
-        cursor: pointer;
-      }
+   button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background-color: black;
+      z-index: -1;
+      transition: width 0.4s ease;
+    }
+
+button:hover::before {
+      width: 100%;
+    }
+
+button:hover {
+      color: white;
 
       video {
         width: 90%;
